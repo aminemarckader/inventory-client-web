@@ -1,69 +1,42 @@
-// import React from 'react';
-// import './App.css';
- import Home from './Components/Dashboard/Home';
-// import MenuAppBar from './Components/Navigation/MenuAppBar';
-// import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import React from "react";
+import clsx from "clsx";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
 
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#2C3E50',
-//     },
-//     secondary: {
-//       main: '#95a5a6',
-//     },
-//     success: {
-//       main: '#18BC9C',
-//     },
-//   },
-// });
-// function App() {
-//   return (
-//     <div className="App">
-//     <ThemeProvider theme={theme}>
-//       <MenuAppBar />
-//       <Home />
-//     </ThemeProvider>
-      
-//     </div>
-//   );
-// }
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import LaptopWindowsIcon from '@material-ui/icons/LaptopWindows';
+import BusinessIcon from '@material-ui/icons/Business';
 
-// export default App;
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./Components/Dashboard/Home";
 
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { Link } from 'react-router-dom';
-
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import About from './Components/About/About';
+import About from "./Components/About/About";
+import Page404 from "./Components/404/page-404";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -71,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -80,35 +53,35 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 36,
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
   },
   drawerOpen: {
     width: drawerWidth,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   drawerClose: {
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    overflowX: 'hidden',
+    overflowX: "hidden",
     width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9) + 1,
     },
   },
   toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -117,6 +90,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+
+  links:{
+    color: '#000',
+    textDecoration: 'none',
+
+    '&:focus,&:hover,&:visited,&:link,&:active': {
+        textDecoration: 'none'
+    }
+  }
 }));
 
 export default function App() {
@@ -133,6 +115,7 @@ export default function App() {
   };
 
   return (
+    <Router>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -154,7 +137,7 @@ export default function App() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Hardware Inventory 
+            Hardware Inventory
           </Typography>
         </Toolbar>
       </AppBar>
@@ -172,35 +155,58 @@ export default function App() {
         }}
       >
         <div className={classes.toolbar}>
-          <Link
-            component="button"
-            variant="body2"
-            onClick={() => {
-              console.info("I'm a button.");
-            }}
-          >
-            Button Link
-          </Link>
+          <Typography>
+            Inventory
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </div>
         <Divider />
         <List>
-        {['Home', 'About', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <Link to={`/${text}`}>
-                <ListItemText primary={text} />
-              </Link>
-            </ListItem>
-          ))}
+          {/* Dashboard */}
+         <Link className={classes.links} to="/">
+         <ListItem button>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+          </ListItem>
+         </Link>
+
+         {/* Laptops */}
+
+         <Link className={classes.links} to="/about">
+         <ListItem button>
+          <ListItemIcon>
+            <LaptopWindowsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Laptops" />
+          </ListItem>
+         </Link>
+
+         {/* Departments */}
+
+         <Link className={classes.links} to="/departments">
+         <ListItem button>
+          <ListItemIcon>
+            <BusinessIcon />
+          </ListItemIcon>
+          <ListItemText primary="Departments" />
+          </ListItem>
+         </Link>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {["All mail", "Trash", "Spam"].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -208,17 +214,21 @@ export default function App() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-      </Switch>
-    </Router>
+        
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="*">
+            <Page404 />
+          </Route>
+          </Switch>
+
       </main>
     </div>
+    </Router>
   );
 }
