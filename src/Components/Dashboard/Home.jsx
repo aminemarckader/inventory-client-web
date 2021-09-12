@@ -1,9 +1,10 @@
 import React from 'react';
+import DeviceCard from '../Cards/DeviceCard';
 
 function Home(props) {
     return (
         <div>
-            Home
+            <DeviceCard />
         </div>
     );
 }
