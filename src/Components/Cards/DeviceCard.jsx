@@ -6,17 +6,21 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import ComputerIcon from "@material-ui/icons/Computer";
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import MuiLink from '@material-ui/core/Link';
+
+import {Link} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    height: 100
   },
   details: {
     display: "flex",
     flexDirection: "column",
   },
   content: {
-    flex: "1 0 auto",
+     flex: "1 0 auto",
   },
   cover: {
     width: 90,
@@ -27,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   controls: {
     display: "flex",
     alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   playIcon: {
     height: 42,
@@ -44,7 +48,8 @@ export default function DeviceCard() {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} lg={3}>
+    <>
+    <Grid item component="Card" xs={12} sm={6} lg={3}>
       <Card className={classes.root}>
         <CardMedia className={classes.cover}>
           <ComputerIcon className={classes.playIcon} />
@@ -52,17 +57,42 @@ export default function DeviceCard() {
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Typography component="h6" variant="h6">
-              MSEKIT-001
+              <MuiLink underline="none">
+                <Link to="/hardware/details/vvv">
+                  MSEKIT-001
+                </Link>
+              </MuiLink>
+             
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary">
+              Information Technologies
+            </Typography>
+          </CardContent>
+        </div>
+       
+      </Card>
+    </Grid>
+
+    <Grid item component="Card" style={{ height: '-webkit-fill-available' }} xs={12} sm={6} lg={3}>
+      <Card className={classes.root}>
+        <CardMedia className={classes.cover}>
+          <ComputerIcon className={classes.playIcon} />
+        </CardMedia>
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h6" variant="h6">
+              <Link to="/hardware/details/vvv">
+                MSEKIT-001
+              </Link>
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
               Quality Control
             </Typography>
           </CardContent>
         </div>
-        <CardMedia className={classes.cover}>
-          <KeyboardArrowRightIcon className={classes.detailsIcon} />
-        </CardMedia>
+       
       </Card>
     </Grid>
+    </>
   );
 }

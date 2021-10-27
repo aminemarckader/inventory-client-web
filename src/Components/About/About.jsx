@@ -21,7 +21,7 @@ export default function About() {
       <Typography variant="h4" gutterBottom component="div">
         Hardware List
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
        
       <DeviceCard />
             <DeviceCard />
