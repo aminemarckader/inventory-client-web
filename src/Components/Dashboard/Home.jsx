@@ -1,20 +1,28 @@
-import React from 'react';
-import DeviceCard from '../Cards/DeviceCard';
+import { Grid, Paper } from "@material-ui/core";
+
+import React from "react";
+
+import AgeBarChart from "./AgeBarChart";
+import HardwareTypes from "./HardwareTypes";
 
 function Home(props) {
-    return (
-        <div>
-           
-            <DeviceCard />
-            <DeviceCard />
-            <DeviceCard />
-            <DeviceCard />
-            <DeviceCard />
-            <DeviceCard />
-            <DeviceCard />
-            
-        </div>
-    );
+  return (
+    <div>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} lg={7}>
+          <Paper elevation={3}>
+            <AgeBarChart />
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={12} lg={5}>
+          <Paper elevation={3}>
+            <HardwareTypes />
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
 
 export default Home;

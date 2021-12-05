@@ -1,40 +1,49 @@
-import React from 'react';
-import { VictoryBar,VictoryChart,VictoryTheme,VictoryAxis } from 'victory';
+import React from "react";
+import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory";
+import { Grid, Typography } from "@material-ui/core";
 
 const data = [
-    {quarter: 1, earnings: 13000},
-    {quarter: 2, earnings: 16500},
-    {quarter: 3, earnings: 14250},
-    {quarter: 4, earnings: 19000},
-    {quarter: 5, earnings: 19400}
-  ];
-  
-  class AgeBarChart extends React.Component {
-    render() {
-      return (
+  { brand: 1, units: 13 },
+  { brand: 2, units: 16 },
+  { brand: 3, units: 14 },
+  { brand: 4, units: 19 },
+  { brand: 5, units: 19 },
+];
+
+class AgeBarChart extends React.Component {
+  render() {
+    return (
+      <>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <Typography style={{ textAlign: "center", paddingTop: 10 }}>
+              Hardware Brands
+            </Typography>
+          </Grid>
+        </Grid>
+
         <VictoryChart
           // adding the material theme provided with Victory
           theme={VictoryTheme.material}
           domainPadding={20}
-          width={600} 
+          width={600}
           height={300}
         >
           <VictoryAxis
-            tickValues={[1, 2, 3, 4,5]}
-            tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4","Quarter 5"]}
+            tickValues={[1, 2, 3, 4, 5]}
+            tickFormat={["HP", "Dell", "Lenovo", "Microsoft", "Other"]}
           />
-          <VictoryAxis
-            dependentAxis
-            tickFormat={(x) => (`$${x / 1000}k`)}
-          />
-          <VictoryBar
-            data={data}
-            x="quarter"
-            y="earnings"
-          />
+          <VictoryAxis dependentAxis />
+          <VictoryBar data={data} x="brand" y="units" />
         </VictoryChart>
-      )
-    }
+      </>
+    );
   }
+}
 
-  export default AgeBarChart;
+export default AgeBarChart;
