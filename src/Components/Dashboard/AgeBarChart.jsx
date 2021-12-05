@@ -1,11 +1,17 @@
 import React from "react";
-import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme,
+  VictoryAxis,
+  VictoryLabel,
+} from "victory";
 import { Grid, Typography } from "@material-ui/core";
 
 const data = [
   { brand: 1, units: 13 },
   { brand: 2, units: 16 },
-  { brand: 3, units: 14 },
+  { brand: 3, units: 26 },
   { brand: 4, units: 19 },
   { brand: 5, units: 19 },
 ];
@@ -39,7 +45,14 @@ class AgeBarChart extends React.Component {
             tickFormat={["HP", "Dell", "Lenovo", "Microsoft", "Other"]}
           />
           <VictoryAxis dependentAxis />
-          <VictoryBar data={data} x="brand" y="units" />
+          <VictoryBar
+            data={data}
+            x="brand"
+            y="units"
+            labels={({ datum }) => datum.y}
+            style={{ labels: { fill: "white" } }}
+            labelComponent={<VictoryLabel dy={30} />}
+          />
         </VictoryChart>
       </>
     );
