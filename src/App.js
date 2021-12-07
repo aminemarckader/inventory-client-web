@@ -27,6 +27,7 @@ import Home from "./Components/Dashboard/Home";
 
 import About from "./Components/About/About";
 import Page404 from "./Components/404/page-404";
+import CreateHardware from "./Components/Hardware/CreateHardware";
 
 const drawerWidth = 240;
 
@@ -202,14 +203,23 @@ export default function App() {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {/* {["All mail", "Trash", "Spam"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
-          ))}
+          ))} */}
+           {/* Dashboard */}
+         <Link className={classes.links} to="/hardware/create">
+         <ListItem button>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Create" />
+          </ListItem>
+         </Link>
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -219,8 +229,13 @@ export default function App() {
             <Route exact path="/">
               <Home />
             </Route>
+
             <Route path="/about">
               <About />
+            </Route>
+
+            <Route path="/hardware/create">
+              <CreateHardware />
             </Route>
             <Route path="*">
             <Page404 />
