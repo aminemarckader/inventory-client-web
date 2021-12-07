@@ -1,11 +1,11 @@
 import React from "react";
-import { makeStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import ComputerIcon from "@material-ui/icons/Computer";
+import { makeStyles} from "@mui/styles";
+import Grid from '@mui/material/Grid';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import ComputerIcon from "@mui/material/Computer";
 import MuiLink from '@material-ui/core/Link';
 
 import {Link} from 'react-router-dom';

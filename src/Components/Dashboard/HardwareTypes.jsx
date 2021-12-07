@@ -1,6 +1,7 @@
-import { Grid, Typography } from "@material-ui/core";
 import React from "react";
-import { VictoryPie, VictoryTheme, VictoryChart, VictoryLegend } from "victory";
+
+import { Grid, Typography } from "@mui/material";
+import { VictoryPie, VictoryTheme } from "victory";
 
 export default function HardwareTypes() {
   return (

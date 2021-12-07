@@ -6,7 +6,7 @@ import {
   VictoryAxis,
   VictoryLabel,
 } from "victory";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 
 const data = [
   { brand: 1, units: 13 },
